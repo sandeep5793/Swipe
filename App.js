@@ -16,10 +16,26 @@ const DATA = [
 
 export default class App extends Component {
 
+
+  renderNoMoreCards() {
+    return (
+      <Card title='All Done!'
+      >
+        <Text style={{ marginBottom: 10 }}>
+          {'There are no more cards'}
+        </Text>
+        <Button
+          backgroundColor={'#03A9F4'}
+          title={'Get more!'}
+        />
+      </Card>
+    )
+  }
+
   renderCard(item) {
     return (
       <Card
-      key={item.id}
+        key={item.id}
         title={item.text}
         image={{ uri: item.uri }}
 
@@ -40,6 +56,9 @@ export default class App extends Component {
       <View style={styles.container} >
         <Deck
           data={DATA}
+          // onSwipeLeft={}
+          // onSwipeRight={}
+          renderNoMoreCards={this.renderNoMoreCards}
           renderCard={this.renderCard}
         />
       </View>
